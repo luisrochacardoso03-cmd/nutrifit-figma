@@ -1,0 +1,914 @@
+<index html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriFit - Sua Dieta Personalizada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #10b981;
+        }
+
+        .btn-download {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-download:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            padding: 80px 0;
+            margin-bottom: 60px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1e293b;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: #64748b;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .btn-experimentar {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-experimentar:hover {
+            background: #059669;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.5);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-screen {
+            padding: 40px 25px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .phone-header {
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            font-size: 14px;
+        }
+
+        .meal-card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            color: white;
+        }
+
+        .meal-title {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .meal-food {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+            margin-bottom: 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #f1f5f9;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #e2e8f0;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: #10b981;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 28px;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .feature-description {
+            color: #64748b;
+            font-size: 16px;
+        }
+
+        /* How it works */
+        .how-it-works {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            margin-bottom: 60px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .step-description {
+            color: #64748b;
+        }
+
+        /* Plans */
+        .plans {
+            padding: 80px 0;
+            background-color: white;
+            margin-bottom: 60px;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: 24px;
+            padding: 50px 40px;
+            text-align: center;
+            border: 3px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .plan-card.popular {
+            border-color: #10b981;
+            position: relative;
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #10b981;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .plan-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .plan-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #10b981;
+            margin-bottom: 30px;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-btn {
+            background: #f1f5f9;
+            color: #475569;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        .plan-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .plan-btn.premium {
+            background: #10b981;
+            color: white;
+        }
+
+        .plan-btn.premium:hover {
+            background: #059669;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            margin-bottom: 60px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: #10b981;
+            opacity: 0.2;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .stars {
+            color: #f59e0b;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .footer-description {
+            color: #94a3b8;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: #334155;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #10b981;
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #10b981;
+        }
+
+        .app-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .app-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 25px;
+            background: #334155;
+            border-radius: 16px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .app-link:hover {
+            background: #10b981;
+            transform: translateY(-3px);
+        }
+
+        .app-icon {
+            font-size: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            
+            .hero-text {
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .plan-card.popular {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .phone-mockup {
+                width: 250px;
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <div class="logo-icon">N</div>
+                    <div class="logo-text">NutriFit</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#funcionalidades">Funcionalidades</a></li>
+                        <li><a href="#planos">Planos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </nav>
+                <button class="btn-download">Baixar App</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Monte sua dieta personalizada em poucos cliques.</h1>
+                    <p class="hero-subtitle">NutriFit cria planos alimentares automáticos com base no seu perfil, preferências e rotina.</p>
+                    <button class="btn-experimentar">Experimente Gratuitamente <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="hero-image">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="phone-header">
+                                <div style="width: 30px;"></div>
+                                <span>10:30</span>
+                                <div style="width: 50px; display: flex; justify-content: space-between;">
+                                    <i class="fas fa-signal"></i>
+                                    <i class="fas fa-wifi"></i>
+                                    <i class="fas fa-battery-full"></i>
+                                </div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-title">Café da manhã</div>
+                                <div class="meal-food">Aveia com frutas frescas</div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-title">Almoço</div>
+                                <div class="meal-food">Frango grelhado com quinoa</div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-title">Lanche</div>
+                                <div class="meal-food">Iogurte natural com mel</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="funcionalidades" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Funcionalidades</h2>
+                <p class="section-subtitle">Tudo o que você precisa para manter uma alimentação saudável e equilibrada</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Dieta personalizada</h3>
+                    <p class="feature-description">Planos alimentares criados especialmente para suas necessidades e objetivos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Acompanhamento de progresso</h3>
+                    <p class="feature-description">Monitore suas conquistas e evolução com gráficos e estatísticas detalhadas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="feature-title">Notificações e lembretes</h3>
+                    <p class="feature-description">Lembretes inteligentes para suas refeições e metas diárias.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Inteligência para substituições</h3>
+                    <p class="feature-description">Sugestões automáticas de alimentos alternativos baseadas em suas preferências.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Como funciona</h2>
+                <p class="section-subtitle">Comece sua jornada para uma vida mais saudável em apenas 4 passos simples</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Cadastre seus dados</h3>
+                    <p class="step-description">Informe suas medidas, objetivos e estilo de vida</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Escolha suas preferências</h3>
+                    <p class="step-description">Selecione gostos, restrições alimentares e horários</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Receba sua dieta</h3>
+                    <p class="step-description">Obtenha seu plano alimentar personalizado imediatamente</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Acompanhe resultados</h3>
+                    <p class="step-description">Monitore seu progresso e ajuste conforme necessário</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans -->
+    <section id="planos" class="plans">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Planos e assinaturas</h2>
+                <p class="section-subtitle">Escolha o plano ideal para sua jornada de saúde e bem-estar</p>
+            </div>
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <h3 class="plan-title">Gratuito</h3>
+                    <div class="plan-price">Com anúncios</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle" style="color: #10b981;"></i> Dieta básica personalizada</li>
+                        <li><i class="fas fa-check-circle" style="color: #10b981;"></i> Acompanhamento de progresso</li>
+                        <li><i class="fas fa-check-circle" style="color: #10b981;"></i> Notificações básicas</li>
+                    </ul>
+                    <button class="plan-btn">Começar grátis</button>
+                </div>
+                <div class="plan-card popular">
+                    <div class="popular-badge">Mais popular</div>
+                    <h3 class="plan-title">Premium</h3>
+                    <div class="plan-price">R$ 19,90/mês</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle" style="color: #10b981;"></i> Receitas exclusivas</li>
+                        <li><i class="fas fa-check-circle" style="color: #10b981;"></i> Lista de compras automática</li>
+                        <li><i class="fas fa-check-circle" style="color: #10b981;"></i> IA nutricional avançada</li>
+                        <li><i class="fas fa-check-circle" style="color: #10b981;"></i> Sem anúncios</li>
+                        <li><i class="fas fa-check-circle" style="color: #10b981;"></i> Substituições inteligentes</li>
+                    </ul>
+                    <button class="plan-btn premium">Assinar Premium</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">O que nossos usuários dizem</h2>
+                <p class="section-subtitle">Histórias reais de transformação e conquista</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Finalmente encontrei um app que entende minhas necessidades! Perdi 8kg em 3 meses com a dieta personalizada."</p>
+                    <p class="testimonial-author">Ana Silva</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"As substituições inteligentes salvaram minha dieta! Agora consigo manter meus hábitos saudáveis mesmo com minha rotina corrida."</p>
+                    <p class="testimonial-author">Carlos Mendes</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"A lista de compras automática é incrível! Economizo tempo e dinheiro, além de comer muito melhor."</p>
+                    <p class="testimonial-author">Mariana Costa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <div class="logo-icon">N</div>
+                        <div class="logo-text">NutriFit</div>
+                    </div>
+                    <p class="footer-description">Sua jornada para uma vida mais saudável começa aqui. NutriFit: alimentação personalizada, resultados reais.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Links rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#funcionalidades">Funcionalidades</a></li>
+                        <li><a href="#planos">Planos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Baixar app</h4>
+                    <div class="app-links">
+                        <a href="#" class="app-link">
+                            <div class="app-icon"><i class="fab fa-apple"></i></div>
+                            <span>App Store</span>
+                        </a>
+                        <a href="#" class="app-link">
+                            <div class="app-icon"><i class="fab fa-google-play"></i></div>
+                            <span>Google Play</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 NutriFit – Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Button hover effects already handled by CSS
+    </script>
+</body>
+</html>
+
